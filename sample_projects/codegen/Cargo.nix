@@ -241,11 +241,15 @@ rec {
         version = "0.7.1";
         edition = "2018";
         workspace_member = null;
-        src = pkgs.fetchgit {
+        src = builtins.fetchGit ({
           url = "https://github.com/diwic/dbus-rs.git";
           rev = "b079366e27da1b9c2869f065fbb6004138e439c2";
-          sha256 = "0lbp76vvi0cw57lxhfqmz22qd5l61w3rh8g58hhmwi8wcr9qmiiw";
-        };
+          submodules = true;
+        } // (if isNull  null  then {
+          allRefs = true;
+        } else {
+          ref =  null ;
+        }));
         authors = [
           "David Henningsson <diwic@ubuntu.com>"
         ];
@@ -268,11 +272,15 @@ rec {
         edition = "2018";
         crateBin = [];
         workspace_member = null;
-        src = pkgs.fetchgit {
+        src = builtins.fetchGit ({
           url = "https://github.com/diwic/dbus-rs.git";
           rev = "b079366e27da1b9c2869f065fbb6004138e439c2";
-          sha256 = "0lbp76vvi0cw57lxhfqmz22qd5l61w3rh8g58hhmwi8wcr9qmiiw";
-        };
+          submodules = true;
+        } // (if isNull  null  then {
+          allRefs = true;
+        } else {
+          ref =  null ;
+        }));
         authors = [
           "David Henningsson <diwic@ubuntu.com>"
         ];
@@ -312,11 +320,15 @@ rec {
         version = "0.2.1";
         edition = "2015";
         workspace_member = null;
-        src = pkgs.fetchgit {
+        src = builtins.fetchGit ({
           url = "https://github.com/diwic/dbus-rs.git";
           rev = "b079366e27da1b9c2869f065fbb6004138e439c2";
-          sha256 = "0lbp76vvi0cw57lxhfqmz22qd5l61w3rh8g58hhmwi8wcr9qmiiw";
-        };
+          submodules = true;
+        } // (if isNull  null  then {
+          allRefs = true;
+        } else {
+          ref =  null ;
+        }));
         authors = [
           "David Henningsson <diwic@ubuntu.com>"
         ];

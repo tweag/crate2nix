@@ -115,11 +115,15 @@ rec {
         version = "0.1.2-alpha.0";
         edition = "2018";
         workspace_member = null;
-        src = pkgs.fetchgit {
+        src = builtins.fetchGit ({
           url = "https://github.com/kolloch/nix-base32";
           rev = "42f5544e51187f0c7535d453fcffb4b524c99eb2";
-          sha256 = "011f945b48xkilkqbvbsxazspz5z23ka0s90ms4jiqjbhiwll1nw";
-        };
+          submodules = true;
+        } // (if isNull  "branch-for-test"  then {
+          allRefs = true;
+        } else {
+          ref =  "branch-for-test" ;
+        }));
         authors = [
           "Peter Kolloch <info@eigenvalue.net>"
         ];

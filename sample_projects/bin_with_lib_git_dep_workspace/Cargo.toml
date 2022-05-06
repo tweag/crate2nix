@@ -1,0 +1,8 @@
+[package]
+name = "bin_with_lib_git_dep_workspace"
+version = "0.1.0"
+authors = ["Peter Kolloch <info@eigenvalue.net>"]
+edition = "2018"
+
+[dependencies]
+"prost" = { git = "https://github.com/tokio-rs/prost", rev="7c0916d908c2d088ddb64a7e8849bfc839f6a3de" }

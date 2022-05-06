@@ -191,6 +191,12 @@ let
     }
 
     {
+      name = "bin_with_lib_git_dep_workspace";
+      src = ./sample_projects/bin_with_lib_git_dep_workspace;
+      expectedOutput = "Hello world from bin_with_lib_git_dep_workspace!";
+    }
+
+    {
       name = "bin_with_git_branch_dep";
       src = ./sample_projects/bin_with_git_branch_dep;
       expectedOutput = "Hello world from bin_with_git_branch_dep!";
@@ -683,10 +689,10 @@ in
   #
   # It is to have them directly as attributes for testing.
 
-  registryGit = pkgs.fetchgit {
+  registryGit = builtins.fetchGit {
     url = "https://github.com/rust-lang/crates.io-index";
     rev = "18e3f063f594fc08a078f0de2bb3f94beed16ae2";
-    sha256 = "0rpv12ifgnni55phlkb5ppmala7y3zrsc9dl8l99pbsjpqx95vmj";
+    allRefs = true;
   };
 
   registry = pkgs.linkFarm "crates.io-index" [
