@@ -751,11 +751,15 @@ rec {
         version = "6.2.4";
         edition = "2015";
         workspace_member = null;
-        src = pkgs.fetchgit {
+        src = builtins.fetchGit ({
           url = "https://github.com/rust-rocksdb/rust-rocksdb";
           rev = "64bd09899306d23dfd1504465bd1e9adb15fb9ca";
-          sha256 = "0mgawc86jxvbmgk66xq644mizh59vgb1i0a2f28knram4lch108f";
-        };
+          submodules = true;
+        } // (if isNull  null  then {
+          allRefs = true;
+        } else {
+          ref =  null ;
+        }));
         authors = [
           "Karl Hobley <karlhobley10@gmail.com>"
           "Arkadiy Paronyan <arkadiy@ethcore.io>"
@@ -996,11 +1000,15 @@ rec {
         version = "0.13.0";
         edition = "2015";
         workspace_member = null;
-        src = pkgs.fetchgit {
+        src = builtins.fetchGit ({
           url = "https://github.com/rust-rocksdb/rust-rocksdb";
           rev = "64bd09899306d23dfd1504465bd1e9adb15fb9ca";
-          sha256 = "0mgawc86jxvbmgk66xq644mizh59vgb1i0a2f28knram4lch108f";
-        };
+          submodules = true;
+        } // (if isNull  null  then {
+          allRefs = true;
+        } else {
+          ref =  null ;
+        }));
         authors = [
           "Tyler Neely <t@jujit.su>"
           "David Greenberg <dsg123456789@gmail.com>"

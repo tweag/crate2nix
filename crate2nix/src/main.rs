@@ -268,7 +268,11 @@ pub enum SourceAddingCommands {
         #[structopt(long = "rev", parse(from_str), help = "The git revision hash.")]
         rev: String,
 
-        #[structopt(long = "ref", parse(from_str), help = "The git reference (branch or tag).")]
+        #[structopt(
+            long = "ref",
+            parse(from_str),
+            help = "The git reference (branch or tag)."
+        )]
         r#ref: Option<String>,
     },
 
@@ -322,7 +326,12 @@ impl SourceAddingCommands {
                 let source = crate2nix::sources::crates_io_source(crate_name, crate_version)?;
                 (name, source)
             }
-            SourceAddingCommands::Git { name, url, rev, r#ref } => {
+            SourceAddingCommands::Git {
+                name,
+                url,
+                rev,
+                r#ref,
+            } => {
                 let source = crate2nix::sources::git_io_source(url, rev, r#ref)?;
                 (name, source)
             }

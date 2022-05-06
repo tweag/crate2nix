@@ -191,6 +191,12 @@ let
     }
 
     {
+      name = "bin_with_lib_git_dep_workspace";
+      src = ./sample_projects/bin_with_lib_git_dep_workspace;
+      expectedOutput = "Hello world from bin_with_lib_git_dep_workspace!";
+    }
+
+    {
       name = "bin_with_git_branch_dep";
       src = ./sample_projects/bin_with_git_branch_dep;
       expectedOutput = "Hello world from bin_with_git_branch_dep!";

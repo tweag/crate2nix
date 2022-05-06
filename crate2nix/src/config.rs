@@ -183,7 +183,12 @@ impl Display for Source {
                 version,
                 sha256,
             } => write!(f, "{} {} from crates.io: {}", name, version, sha256),
-            Source::Git { url, rev, r#ref, sha256 } => write!(f, "{}#{} on {:?} via git: {:?}", url, rev, r#ref, sha256),
+            Source::Git {
+                url,
+                rev,
+                r#ref,
+                sha256,
+            } => write!(f, "{}#{} on {:?} via git: {:?}", url, rev, r#ref, sha256),
             Source::Nix { file, attr: None } => write!(f, "{}", file),
             Source::Nix {
                 file,

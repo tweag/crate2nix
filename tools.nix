@@ -9,7 +9,8 @@
 , lib ? pkgs.lib
 , stdenv ? pkgs.stdenv
 , strictDeprecation ? true
-, useCrate2NixFromPkgs ? false,
+, useCrate2NixFromPkgs ? false
+,
 }:
 let
   cargoNix = import ./crate2nix/Cargo.nix { inherit pkgs strictDeprecation; };
@@ -195,7 +196,8 @@ rec {
       let
         parsed = parseGitSource source;
         ref = parsed.branch or parsed.tag or null;
-      in builtins.fetchGit ({
+      in
+      builtins.fetchGit ({
         inherit (parsed) url;
         rev = parsed.revision;
         submodules = true;
@@ -325,10 +327,10 @@ rec {
                   putTag = (hasTag attrs) || (hasTag parsed);
                   putRev = (hasRev attrs) || (hasRev parsed);
                   isNewerCargo = builtins.compareVersions pkgs.cargo.version "1.53.0" > (-1);
-                  key = if putRev    then "?rev=${attrs.rev or parsed.rev}"       else
-                        if putTag    then "?tag=${attrs.tag or parsed.tag}"       else
-                        if putBranch then "?branch=${attrs.branch or parsed.branch}" else
-                        "";
+                  key = if putRev then "?rev=${attrs.rev or parsed.rev}" else
+                  if putTag then "?tag=${attrs.tag or parsed.tag}" else
+                  if putBranch then "?branch=${attrs.branch or parsed.branch}" else
+                  "";
                 in
                 ''
 
@@ -411,8 +413,8 @@ rec {
 
               pathToExtract =
                 if isWorkspace then
-                  # Workaround for sources that have isWorkspace as true, but don't
-                  # declare all their members in `workspace.members`
+                # Workaround for sources that have isWorkspace as true, but don't
+                # declare all their members in `workspace.members`
                   if builtins.length filteredPaths > 0
                   then builtins.head filteredPaths
                   # This does not cover all possible cases, only is a last ditch effort
